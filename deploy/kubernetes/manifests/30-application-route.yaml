@@ -1,0 +1,21 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: shop-frontend-nb
+  namespace: test-argo-new-token
+  labels:
+    name: front-end
+    backstage.io/kubernetes-id: test-argo-new-token
+    app.kubernetes.io/name: test-argo-new-token
+    rht-gitops.com/janus-argocd: test-argo-new-token
+spec:
+  #host:
+  to:
+    kind: Service
+    name: front-end
+    weight: 100
+  port:
+    targetPort: 8079
+  wildcardPolicy: None
+  tls:
+    termination: edge

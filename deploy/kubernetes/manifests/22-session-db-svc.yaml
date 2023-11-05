@@ -1,0 +1,18 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: session-db
+  labels:
+    name: session-db
+    backstage.io/kubernetes-id: test-argo-new-token
+    app.kubernetes.io/name: test-argo-new-token
+    rht-gitops.com/janus-argocd: test-argo-new-token
+  namespace: test-argo-new-token
+spec:
+  ports:
+    # the port that this service should serve on
+    - port: 6379
+      targetPort: 6379
+  selector:
+    name: session-db
